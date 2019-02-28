@@ -1,0 +1,43 @@
+$submit-bg-color: #4285f4
+$input-color: #000
+$submit-btn-color: #fff
+$form-border-color: #ccc
+.form__input-wrap
+  display: flex
+  flex-direction: column
+  padding-left: 10px
+  padding-right: 10px
+  margin-bottom: 30px
+  +min-screen(600px)
+    flex-direction: row
+.form__input
+  flex: 1
+  padding: 10px
+  margin-bottom: 10px
+  font-size: 20px
+  color: $input-color
+  border: 2px solid $form-border-color
+  border-radius: 4px 
+  outline: none
+  +min-screen(600px)
+    margin-bottom: 0px
+    border-right: none
+    border-top-right-radius: 0px
+    border-bottom-right-radius: 0px
+.form__btn
+  display: inline-block
+  margin: 0 auto
+  max-width: 70%
+  padding: 10px 15px
+  font-size: 15px
+  color: $submit-btn-color
+  text-transform: uppercase
+  border: none
+  border-radius: 4px
+  background-color: $submit-bg-color
+  outline: none
+  +min-screen(600px)
+    border-radius: 0px 4px 4px 0 
+    max-width: 40%
+    padding-top: 0px
+    padding-bottom: 0px

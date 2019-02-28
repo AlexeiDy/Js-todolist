@@ -1,0 +1,5 @@
+export const ADD_NEW_ITEM = 'ADD_NEW_ITEM';
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const CLEAR_LIST = 'CLEAR_LIST';
+export const TOGGLE_DONE_STATE = 'TOGGLE_DONE_STATE';
+export const DELETE_DONE_ITEMS = 'DELETE_DONE_ITEMS';

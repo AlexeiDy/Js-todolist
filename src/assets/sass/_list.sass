@@ -1,0 +1,67 @@
+$list-btn-color: #fff
+$list-btn-color_disabled: #ccc
+$list-item-bg-color_done: rgba(#90dab7, 0.5)
+$list-item-btn-color: #bf407b
+$list-item-btn-color_hover: #4285f4
+.list
+  margin-bottom: 15px
+  padding: 0px 10px
+  list-style-type: none
+  width: 100%
+  max-width: 100%
+  word-wrap: break-word
+.list__item
+  position: relative
+  display: flex
+  align-items: center
+  margin-bottom: 3px
+  padding: 5px 10px
+  font-size: 16px
+  box-shadow: 0px 1px 3px black
+  cursor: pointer
+  &--done
+    background-color: $list-item-bg-color_done
+    & .list__item-text
+      text-decoration: line-through 
+.list__item-num
+  margin-right: 10px
+  font-size: 22px
+  max-width: 20%
+.list__item-text
+  display: inline-block
+  max-width: 76%
+  margin-right: auto
+.list__item-btn
+  color: $list-item-btn-color
+  transition: color .4s
+  &:hover
+    color: $list-item-btn-color_hover
+  i
+    font-size: 22px
+.list__buttons
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  margin-left: 10px
+  margin-right: 10px
+  margin-bottom: 15px
+  +min-screen(500px)
+    flex-direction: row
+.list__btn
+  padding: 5px 10px
+  margin-left: 5px
+  margin-right: 5px
+  margin-bottom: 10px
+  width: 100%
+  max-width: 100%
+  color: $list-btn-color
+  text-transform: uppercase
+  border-radius: 4px
+  background-color: #4285f4 
+  &[disabled]
+    cursor: not-allowed
+    background-color: $list-btn-color_disabled
+  +min-screen(500px)
+    margin-bottom: 0
+
+

@@ -1,0 +1,51 @@
+$counts-bg-color: #bf407b
+$counts-item-color: #fff
+$counts-item-count-color: #000
+$counts-item-count-bg-color: rgba(#fff, 0.5)
+.counts
+  display: flex
+  align-items: center
+  justify-content: space-around
+  flex-direction: column
+  margin-left: 10px
+  margin-right: 10px
+  margin-bottom: 10px
+  background-color: $counts-bg-color
+  border-radius: 4px
+  max-width: 100%
+  +min-screen(600px)
+    flex-direction: row
+.counts__count
+  max-width: 100%
+
+.counts__item
+  display: flex
+  align-items: center
+  padding: 3px 15px
+  color: $counts-item-color
+  max-width: 100%
+
+.counts__item-text
+  max-width: 80% 
+.counts__item-count
+  position: relative
+  flex-shrink: 0
+  padding: 5px
+  height: 30px
+  width: 30px
+  margin-left: 10px
+  border-radius: 50%
+  color: $counts-item-count-color
+  text-transform: uppercase
+  font-size: 20px
+  background-color: $counts-item-count-bg-color
+  i
+    position: absolute
+    left: 0
+    top: 0
+    bottom: 0
+    right: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-left: -3px
