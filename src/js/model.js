@@ -1,3 +1,4 @@
+/* global localStorage */
 export default class Model {
   init() {
     if (localStorage.getItem('list')) {
@@ -7,17 +8,21 @@ export default class Model {
     }
   }
   async load() {
-    return await this.getTasks();
+    let result = await this.getTasks();
+    return result;
   }
   async add(obj) {
-    return await this.addNewItem(obj);
+    let result = await this.addNewItem(obj);
+    return result;
   }
   async deleteAllTasks() {
-    return await this.removeList();
+    let result = await this.removeList();
+    return result;
   }
 
   async changeListOfTasks(array) {
-    return await this.changingList(array);
+    let result = await this.changingList(array);
+    return result;
   }
 
   getTasks() {
