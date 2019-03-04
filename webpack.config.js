@@ -16,7 +16,6 @@ const styleLoader = isDevelopment
 module.exports = {
   mode: NODE_ENV,
   entry: {
-    vendor: './src/vendor.js',
     app: './src/index.js'
   },
   devtool: false,

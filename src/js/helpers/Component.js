@@ -1,3 +1,4 @@
+/* globals CustomEvent */
 export default class Component {
   constructor() {
     this.domElement = null;

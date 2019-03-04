@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import App from './js/App';
 import './assets/sass/styles.sass';
 

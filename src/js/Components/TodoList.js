@@ -30,7 +30,10 @@ export default class TodoList extends Component {
         this.triggerEvent(TOGGLE_DONE_STATE, clickedEl.dataset.id);
         e.target.classList.toggle('list__item--done');
       } else if (clickedEl.parentElement.classList.contains('js-item-task')) {
-        this.triggerEvent(TOGGLE_DONE_STATE, clickedEl.dataset.id);
+        this.triggerEvent(
+          TOGGLE_DONE_STATE,
+          clickedEl.parentElement.dataset.id
+        );
         clickedEl.parentElement.classList.toggle('list__item--done');
       }
       if (clickedEl.classList.contains('js-delete-task')) {
@@ -48,7 +51,7 @@ export default class TodoList extends Component {
       }
     });
   }
-  fadeInElements = el => {
+  fadeInElements(el) {
     return new Promise((resolve, reject) => {
       const tl = new TimelineMax();
       tl.staggerFromTo(
@@ -65,7 +68,7 @@ export default class TodoList extends Component {
         }
       );
     });
-  };
+  }
 
   fadeOutDeletedEl(el) {
     return new Promise((resolve, reject) => {

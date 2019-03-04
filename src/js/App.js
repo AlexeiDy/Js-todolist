@@ -119,16 +119,12 @@ class App extends Component {
   }
   initDoneTasksArray(arr) {
     if (Array.isArray(arr)) {
-      return arr.filter(item => {
-        if (item.done) {
-          return item;
-        }
-      });
+      return arr.filter(item => item.done);
     }
   }
   initData() {
     return new Promise(resolve => {
-      this.model.load().then(data => {
+      this.model.getTasks().then(data => {
         this.data = data;
         this.doneTasks = this.initDoneTasksArray(this.data);
         resolve(data);
@@ -137,7 +133,7 @@ class App extends Component {
   }
 
   handleAddNewItem = e => {
-    this.model.add(e.detail).then(() => {
+    this.model.addNewItem(e.detail).then(() => {
       this.initData().then(() => {
         this.renderList();
         this.renderClearListBtn();
@@ -148,14 +144,14 @@ class App extends Component {
 
   handleToggleDoneState = e => {
     let doneElement = parseInt(e.detail);
-    let filtered = this.data.filter(item => {
+    let filtered = this.data.map(item => {
       if (parseInt(item.id) === doneElement) {
         item.done = !item.done;
       }
       return item;
     });
 
-    this.model.changeListOfTasks(filtered).then(() => {
+    this.model.changingList(filtered).then(() => {
       this.initData().then(() => {
         this.renderCountDoneItems();
         this.renderClearDoneListBtn();
@@ -164,18 +160,13 @@ class App extends Component {
   };
 
   handleDeletItem = e => {
-    let oldDoneListLength = this.doneTasks.length;
     let currentItem = parseInt(e.detail);
     let filtered = this.data.filter(item => {
-      if (parseInt(item.id) !== currentItem) {
-        return item;
-      }
+      return parseInt(item.id) !== currentItem;
     });
-    this.model.changeListOfTasks(filtered).then(() => {
+    this.model.changingList(filtered).then(() => {
       this.initData().then(() => {
-        if (oldDoneListLength !== this.doneTasks.length) {
-          this.renderCountDoneItems();
-        }
+        this.renderCountDoneItems();
         this.renderCountAllItems();
         this.renderClearListBtn();
         this.renderClearDoneListBtn();
@@ -184,9 +175,8 @@ class App extends Component {
     });
   };
 
-  handleClearList = () => {
-    let filtered = [];
-    this.model.changeListOfTasks(filtered).then(() => {
+  handleClearList = e => {
+    this.model.changingList([]).then(() => {
       this.initData().then(() => {
         this.renderCountAllItems();
         this.renderCountDoneItems();
@@ -198,11 +188,9 @@ class App extends Component {
   };
   handleDeleteDoneItems = e => {
     let filtered = this.data.filter(item => {
-      if (item.done !== true) {
-        return item;
-      }
+      return item.done !== true;
     });
-    this.model.changeListOfTasks(filtered).then(() => {
+    this.model.changingList(filtered).then(() => {
       this.initData().then(() => {
         this.renderCountDoneItems();
         this.renderCountAllItems();
@@ -213,8 +201,8 @@ class App extends Component {
     });
   };
 
-  onRender() {
-    this.model.init();
+  async onRender() {
+    await this.model.init();
     const { domElement } = this;
     this.initData()
       .then(() => {
